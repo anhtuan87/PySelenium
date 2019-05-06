@@ -1,9 +1,10 @@
 from selenpy.element.text_box import TextBox
 from selenpy.support.conditions import be, have
 from selenpy.support import browser
+from tests.pages.general_page import GeneralPage
 
 
-class GoogleHomePage():
+class GoogleHomePage(GeneralPage):
     
     _txt_search = TextBox("name=q")
 
