@@ -1,5 +1,4 @@
 import logging
-import time
 
 from selenium.common.exceptions import NoAlertPresentException, TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
@@ -15,6 +14,7 @@ from tests.pages import common
 class GeneralPage():
     
     _div_dashboard_header = BaseElement("id=header")
+    _link_xpath = "//a[text()='{}']"
 
     def __init__(self):
         pass
@@ -24,16 +24,30 @@ class GeneralPage():
         self.wait_for_page_loaded()
     
     def get_title(self):
-#         time.sleep(1)
         return browser.get_driver().title
     
-    def select_menu(self, dynamic_menu):
-        items = dynamic_menu.split("/")
-        str = "//a[text()='%']"
+    def select_menu(self, dynamic_menu, delimiter="->"):
+        items = dynamic_menu.split(delimiter)
         for item in items:
-            str_replace = str.replace("%", item)
-            element = browser.get_driver().find_element_by_xpath(str_replace)
+            element = BaseElement(self._link_xpath.format(item.strip()))
             element.click()
+    
+    def hover_select_menu(self, dynamic_menu, delimiter="->"):
+        items = dynamic_menu.split(delimiter)
+        for item in items:
+            element = BaseElement(self._link_xpath.format(item.strip()))
+            element.hover_mouse()
+        element.click()
+    
+    def is_menu_present(self, dynamic_menu, delimiter="->"):
+        items = dynamic_menu.split(delimiter)
+        try:
+            for item in items:
+                element = BaseElement(self._link_xpath.format(item.strip()))
+                element.hover_mouse()
+        except Exception:
+            return False
+        return element.is_displayed(0)
    
     def wait_for_alert_popup(self, timeout=None):
         if timeout is None:
@@ -55,6 +69,7 @@ class GeneralPage():
         try:
             alertPopup = self.wait_for_alert_popup()
             alertPopup.accept()
+            common.wait(1)
         except NoAlertPresentException:
             logging.warning("Alert does not exist")
 

@@ -12,6 +12,18 @@ OVERVIEW_DASHBOARD_TITLE = "Overview"
 
 # MESSAGE
 INVALID_USER_AND_PASS_MSG = "Username or password is invalid"
+CHILD_ALREADY_EXIST_MSG = "{} already exists. Please enter a different name."
 
 # TIMING
 LOADING_TIME = 30
+
+# UI
+GLOBAL_SETTING = {"add":"Add Page",
+                  "cre_prof":"Create Profile",
+                  "cre_panel":"Create Panel",
+                  "edit":"Edit",
+                  "del":"Delete"}
+
+# PATH FORMAT
+PATH_L2_FORMAT = "{}->{}"
+PATH_L3_FORMAT = "{}->{}->{}"

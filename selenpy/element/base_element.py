@@ -1,9 +1,12 @@
-from selenpy.support import browser 
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import StaleElementReferenceException
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
 from selenpy.common import config
 from selenpy.helper.wait import wait_for
+from selenpy.support import browser 
 
 
 class BaseElement():
@@ -24,13 +27,23 @@ class BaseElement():
     def _driver(self):
         return browser.get_driver()
 
+    def get_locator(self):
+        return self.__locator
+
+    def set_locator(self, locator):
+        self.__locator = locator
+
     def find_element(self):
         prefix, criteria = self.__parse_locator(self.__locator)
         strategy = self.__strategies[prefix]
         return strategy(criteria)
     
     def click(self):
-        self.find_element().click()
+        try:
+            self.wait_for_visible()
+            self.find_element().click()
+        except (StaleElementReferenceException, Exception) :
+            self.find_element().click() 
         
     def send_keys(self, *value):
         self.find_element().send_keys(value)
@@ -101,3 +114,12 @@ class BaseElement():
             polling = config.poll_during_waits
     
         return wait_for(self.find_element(), element_condition, timeout, polling)
+    
+    def hover_mouse(self):
+        self.wait_for_visible()
+        hover = ActionChains(self._driver).move_to_element(self.find_element())
+        hover.move_by_offset(1, 1)
+        hover.perform()
+    
+    def get_text(self):
+        return self.find_element().text

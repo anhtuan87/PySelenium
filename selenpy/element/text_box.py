@@ -8,3 +8,8 @@ class TextBox(BaseElement):
         
     def clear(self):
         self.find_element().clear()
+        
+    def enter(self, value):
+        element = self.find_element()
+        element.clear()
+        element.send_keys(value)

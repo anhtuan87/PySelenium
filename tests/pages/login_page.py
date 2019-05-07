@@ -18,8 +18,6 @@ class LoginPage(GeneralPage):
     def login(self, repository, user, pwd):
         self._cbb_repository.wait_until(be.visible)
         self._cbb_repository.select_by_value(repository)
-        self._txt_username.clear()
-        self._txt_password.clear()
-        self._txt_username.send_keys(user)
-        self._txt_password.send_keys(pwd)
+        self._txt_username.enter(user)
+        self._txt_password.enter(pwd)
         self._btn_login.click()
