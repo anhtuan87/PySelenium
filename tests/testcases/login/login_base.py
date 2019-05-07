@@ -1,10 +1,11 @@
+import logging
 import unittest
+
 import pytest
 
 from selenpy.support import browser
-import logging
-
 from tests import constant
+
 
 class LoginBase(unittest.TestCase):
 

@@ -1,3 +1,4 @@
+from selenpy.support import browser
 from tests import constant
 from tests.pages.dashboard_page import DashboardPage
 from tests.pages.login_page import LoginPage
@@ -23,8 +24,8 @@ class MPTest(TestBase):
         self.dashboard_page.add_page("Test1")
         self.dashboard_page.add_page("TestChild1", "Test1")
         self.dashboard_page.add_page("TestChild1", "Test1")
-        assert self.login_page.get_alert_popup_text() == constant.CHILD_ALREADY_EXIST_MSG.format("TestChild1")
-        self.dashboard_page.accept_alert_popup_text()
+        assert browser.get_alert_popup_text() == constant.CHILD_ALREADY_EXIST_MSG.format("TestChild1")
+        browser.accept_alert_popup_text()
         self.dashboard_page.cancel_add_page()
         self.dashboard_page.delete_page("Test1->TestChild1")
         self.dashboard_page.delete_page("Test1")

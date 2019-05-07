@@ -13,6 +13,9 @@ OVERVIEW_DASHBOARD_TITLE = "Overview"
 # MESSAGE
 INVALID_USER_AND_PASS_MSG = "Username or password is invalid"
 CHILD_ALREADY_EXIST_MSG = "{} already exists. Please enter a different name."
+MISSING_PROFILE_NAME_MSG = "Please input profile name."
+INVALID_PROFILE_NAME_MSG = "Invalid name. The name cannot contain high ASCII characters or any of the following characters: /:*?<>|\"#[]{}=%;"
+PROFILE_ALREADY_EXIST_MSG = "Data profile name already exists."
 
 # TIMING
 LOADING_TIME = 30
@@ -27,3 +30,6 @@ GLOBAL_SETTING = {"add":"Add Page",
 # PATH FORMAT
 PATH_L2_FORMAT = "{}->{}"
 PATH_L3_FORMAT = "{}->{}->{}"
+
+# TEST DATA
+SPECIAL_CHARS = "/:*?<>|\"#[ ]{}=%;"

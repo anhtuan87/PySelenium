@@ -1,9 +1,10 @@
 from selenpy.element.base_element import BaseElement
 from selenpy.element.ta_combo_box import TAComboBox
 from selenpy.element.text_box import TextBox
+from selenpy.support import browser
 from tests import constant
-from tests.pages.general_page import GeneralPage
 from tests.pages import common
+from tests.pages.general_page import GeneralPage
 
 
 class DashboardPage(GeneralPage):
@@ -38,7 +39,7 @@ class DashboardPage(GeneralPage):
     
     def select_page(self, page_path):
         self.hover_select_menu(page_path)
-        self.wait_for_page_loaded()
+        browser.wait_for_page_loaded()
     
     def edit_page(self, page_path, page_name_new, parent_page_new=None):
         self.select_page(page_path)
@@ -51,7 +52,7 @@ class DashboardPage(GeneralPage):
     def delete_page(self, page_path):
         self.select_page(page_path)
         self.select_global_setting(constant.GLOBAL_SETTING["del"])
-        self.accept_alert_popup_text()
+        browser.accept_alert_popup_text()
     
     def is_page_present(self, page_path):
         return self.is_menu_present(page_path)
