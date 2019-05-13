@@ -1,0 +1,6 @@
+DASHBOARD_URL = "http://localhost:54001/TADashboard/login.jsp"
+REPOSITORY = "SampleRepository"
+VALID_USERNAME = "administrator"
+VALID_PASSWORD = ""
+INVALID_USERNAME = "abc"
+INVALID_PASSWORD = "abc"

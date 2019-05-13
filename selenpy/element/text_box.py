@@ -10,6 +10,7 @@ class TextBox(BaseElement):
         self.find_element().clear()
         
     def enter(self, value):
-        element = self.find_element()
+        self.find_element()
+        element = self.wait_for_visible()
         element.clear()
         element.send_keys(value)

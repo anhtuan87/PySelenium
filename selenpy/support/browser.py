@@ -73,16 +73,7 @@ def accept_alert_popup_text():
     except NoAlertPresentException:
         logging.warning("Alert does not exist")
 
-    
-def is_page_complete():
-    page_status = get_driver().execute_script('return document.readyState=="complete";')
-    jquery_status = get_driver().execute_script('return jQuery.active == 0;')
-    return page_status and jquery_status
-
 
 def wait_for_page_loaded(timeout=None):
     if timeout == None: timeout = config.timeout 
-    count = 0
-    while (not is_page_complete() and count <= timeout):
-        time.sleep(1)
-        count += 1
+    WebDriverWait(get_driver(), timeout).until(lambda driver: driver.execute_script('return document.readyState') == 'complete')

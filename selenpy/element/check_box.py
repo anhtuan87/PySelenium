@@ -15,3 +15,7 @@ class CheckBox(BaseElement):
     def un_check(self):
         if self.is_checked() == True: self.click()
         
+    def set(self, state):
+        if state == True: self.check()
+        else: self.un_check()
+        

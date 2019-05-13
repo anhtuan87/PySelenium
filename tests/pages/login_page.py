@@ -8,9 +8,9 @@ from tests.pages.general_page import GeneralPage
 class LoginPage(GeneralPage):
     
     _cbb_repository = ComboBox("id=repository")
-    _txt_username = TextBox("id=username")
-    _txt_password = TextBox("id=password")
-    _btn_login = BaseElement("css=.btn-login")
+    _txt_username   = TextBox("id=username")
+    _txt_password   = TextBox("id=password")
+    _btn_login      = BaseElement("css=.btn-login")
 
     def __init__(self):
         pass

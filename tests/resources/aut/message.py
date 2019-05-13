@@ -1,0 +1,6 @@
+INVALID_USER_AND_PASS_MSG   = "Username or password is invalid"
+CHILD_ALREADY_EXIST_MSG     = "{} already exists. Please enter a different name."
+MISSING_PROFILE_NAME_MSG    = "Please input profile name."
+INVALID_PROFILE_NAME_MSG    = "Invalid name. The name cannot contain high ASCII characters or any of the following characters: /:*?<>|\"#[]{}=%;"
+PROFILE_ALREADY_EXIST_MSG   = "Data profile name already exists."
+INVALID_DISPLAY_NAME_MSG    = "Invalid display name. The name cannot contain high ASCII characters or any of the following characters: /:*?<>|\"#[]{}=%;"
